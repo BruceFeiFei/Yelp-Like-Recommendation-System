@@ -1,9 +1,9 @@
 {% if users %}
 <ul>
   {% for user in users %}
-  <li><a herf="url user_detail user.id">{{user.name}}</a></li>
+  <li><a herf="url 'user_detail' user.id">{{user.name}}</a></li>
   {% endfor %}
 </ul>
-  {% else %}
-<p>No users are available </p>
+{% else %}
+<p>No users are available.</p>
 {% endif %}
