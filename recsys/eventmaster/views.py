@@ -11,7 +11,20 @@ def user_index(request):
 
 def user_detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    return render(request, 'eventmaster/user_detail.html', {'user': user})
+    rated_events = user.rated_events()
+    content_based_recommended_events = user.content_based_recommended_events()
+    collaborative_based_recommended_events = user.collaborative_based_recommended_events()
+
+    return render(
+        request,
+        'eventmaster/user_detail.html',
+        {
+            'user': user,
+            'rated_events_e': rated_events,
+            'content_based_recommended_events': content_based_recommended_events,
+            'collaborative_based_recommended_events': collaborative_based_recommended_events
+        }
+    )
 
 
 def event_index(request):
