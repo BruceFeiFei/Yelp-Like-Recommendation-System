@@ -20,7 +20,7 @@ def user_detail(request, user_id):
         'eventmaster/user_detail.html',
         {
             'user': user,
-            'rated_events_e': rated_events,
+            'rated_event': rated_events,
             'content_based_recommended_events': content_based_recommended_events,
             'collaborative_based_recommended_events': collaborative_based_recommended_events
         }

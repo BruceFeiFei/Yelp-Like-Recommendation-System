@@ -13,7 +13,6 @@ class User(models.Model):
         rated_events = self.event_set.all()
         return rated_events
 
-
     def content_based_recommended_events(self):
         # Get all events the user has rated
         rated_events = self.rating_set.all().values_list('event', flat=True)
