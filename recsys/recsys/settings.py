@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+YELP_API_KEY = 'FJ8yfe18pKLjAXl3xwU7jtxx9w6kYkOtAhojNinpFVPpIn4Upx99hOhgclEPjn05lXg' \
+               '3Y6SzJM-5aBxFL4EGcFBMAXL0D68r3O2Zs9hduRmlUg6iSFbV_XpysSwVZHYx'
 
 # Application definition
 
