@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
-from .models import User, Event
+from .models import User, Business
 from django.conf import settings
 import requests
 
@@ -10,35 +10,35 @@ import requests
 
 def user_index(request):
     users = User.objects.all()
-    return render(request, 'eventmaster/user_index.html', {'users': users})
+    return render(request, 'reviewmaster/user_index.html', {'users': users})
 
 
 def user_detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    rated_events = user.rated_events()
-    content_based_recommended_events = user.content_based_recommended_events()
-    collaborative_based_recommended_events = user.collaborative_based_recommended_events()
+    rated_businesses = user.rated_businesses()
+    content_based_recommended_businesses = user.content_based_recommended_businesses()
+    collaborative_based_recommended_businesses = user.collaborative_based_recommended_businesses()
 
     return render(
         request,
-        'eventmaster/user_detail.html',
+        'reviewmaster/user_detail.html',
         {
             'user': user,
-            'rated_events': rated_events,
-            'content_based_recommended_events': content_based_recommended_events,
-            'collaborative_based_recommended_events': collaborative_based_recommended_events
+            'rated_businesses': rated_businesses,
+            'content_based_recommended_businesses': content_based_recommended_businesses,
+            'collaborative_based_recommended_businesses': collaborative_based_recommended_businesses
         }
     )
 
 
-def event_index(request):
-    events = Event.objects.all()
-    return render(request, 'eventmaster/event_index.html', {'events': events})
+def business_index(request):
+    businesses = Business.objects.all()
+    return render(request, 'reviewmaster/business_index.html', {'businesses': businesses})
 
 
-def event_detail(request, event_id):
-    event = get_object_or_404(Event, pk=event_id)
-    return render(request, 'eventmaster/event_detail.html', {'event': event})
+def business_detail(request, business_id):
+    business = get_object_or_404(Business, pk=business_id)
+    return render(request, 'reviewmaster/business_detail.html', {'business': business})
 
 
 def demo_yelp_businesses(request):

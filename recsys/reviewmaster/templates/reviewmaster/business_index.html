@@ -1,0 +1,9 @@
+{% if businesses %}
+<ul>
+    {% for business in businesses %}
+    <li><a herf="url 'business_detail' business.id">{{business.name}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No businesses are available.</p>
+{% endif %}

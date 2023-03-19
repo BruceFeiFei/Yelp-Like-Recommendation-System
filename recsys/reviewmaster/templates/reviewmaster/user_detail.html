@@ -1,0 +1,26 @@
+{% if user %}
+<p>User Id is {{user.id}}.</p>
+<p>User name is {{user.name}}.</p>
+<div>
+    User has rated following businesses:
+    <ul>
+        {% for business in rated_businesses %}
+        <li><a herf="url 'business_detail' business.id">{{business.name}}</a></li>
+        {% endfor %}
+    </ul>
+    Businesses recommended by content based:
+    <ul>
+        {% for business in content_based_recommended_businesses %}
+        <li><a herf="url 'business_detail' business.id">{{business.name}}</a></li>
+        {% endfor %}
+    </ul>
+    Businesses recommended by collaborative filtering:
+    <ul>
+        {% for business in collaborative_based_recommended_businesses %}
+        <li><a herf="url 'business_detail' business.id">{{business.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<p>User doesn't exist.</p>
+{% endif %}
