@@ -1,7 +1,7 @@
 {% if businesses %}
 <ul>
     {% for business in businesses %}
-    <li><a herf="url 'business_detail' business.id">{{business.name}}</a></li>
+    <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
     {% endfor %}
 </ul>
 {% else %}
