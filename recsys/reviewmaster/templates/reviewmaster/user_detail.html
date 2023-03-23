@@ -1,6 +1,8 @@
 {% if user %}
 <p>User Id is {{user.id}}.</p>
-<p>User name is {{user.name}}.</p>
+<p>User name is <a href=" {{user.profile_url}} " >{{user.name}}</a>.</p>
+<p><a href=" {{user.profile_url}} " >User profile</a></p>
+<p><img src="{{user.image_url}}" alt="image_url" width="200"></p>
 <div>
     User has rated following businesses:
     <ul>

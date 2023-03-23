@@ -1,6 +1,24 @@
 {% if business %}
 <p>Business Id is {{business.id}}</p>
-<p>Business name is {{business.name}}.</p>
+<p>Business name is <a href="{{business.url}}">{{business.name}}</a>.</p>
+<div>
+    <p>Business description and status</p>
+    <ul>
+        {% if business.isclosed %}
+        <li>Business closed</li>
+        {% else %}
+        <li>Business opened</li>
+        {% endif %}
+        <li>{{business.review_count}} people reviewed</li>
+        <li>Average rating is {{business.rating}} stars</li>
+        <li>Price is {{business.get_price_display}}</li>
+        <li>Business location is {{business.latitude}}, {{business.longitude}}</li>
+        <li>Address is {{business.address1}}; {{business.address2}}; {{business.address3}} </li>
+        <li>{{business.city}}, {{business.state}}, {{business.country}}, {{business.zip_code}}</li>
+        <li>Contact number: {{business.phone}}</li>
+    </ul>
+</div>
+<p><img src="{{business.image_url}}" width="200"></p>
 {% else %}
 <p>Business doesn't exist.</p>
 {% endif %}

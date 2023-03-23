@@ -48,10 +48,10 @@ class User(models.Model):
 
 class Business(models.Model):
     PRICE_RATINGS = [
-        ("$", "cheap"),
-        ("$$", "mild cheap"),
-        ("$$$", "expensive"),
-        ("$$$$", "extremely expensive")
+        ("$",    "cheap"),
+        ("$$",   "mild cheap"),
+        ("$$$",  "expensive"),
+        ("$$$$", "extremely expensive"),
     ]
     id = models.CharField(max_length=200, primary_key=True)
     alias = models.CharField(max_length=200)

@@ -89,7 +89,7 @@ def dump_yelp_data(request):
             id=str(business_data['id']),
             alias=business_data['alias'],
             name=business_data['name'],
-            image_url=business_data['url'],
+            image_url=business_data['image_url'],
             is_closed=business_data['is_closed'],
             url=business_data['url'],
             review_count=business_data['review_count'],
