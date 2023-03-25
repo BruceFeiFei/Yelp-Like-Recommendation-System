@@ -1,9 +1,9 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
-class User(models.Model):
+class User(AbstractUser):
     id = models.CharField(max_length=200, primary_key=True)
     profile_url = models.URLField(max_length=2000)
     image_url = models.URLField(max_length=2000, null=True)

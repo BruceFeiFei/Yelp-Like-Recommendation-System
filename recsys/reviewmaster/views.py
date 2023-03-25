@@ -1,4 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from .models import User, Business, Review
 from django.conf import settings
@@ -7,12 +14,13 @@ import requests
 
 # Create your views here.
 
-
+@staff_member_required
 def user_index(request):
     users = User.objects.all()
     return render(request, 'reviewmaster/user_index.html', {'users': users})
 
 
+@login_required
 def user_detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     rated_businesses = user.rated_businesses()
@@ -123,7 +131,9 @@ def dump_yelp_data(request):
                 defaults={
                     'profile_url': review_data['user']['profile_url'],
                     'image_url': review_data['user']['image_url'],
-                    'name': review_data['user']['name']
+                    'name': review_data['user']['name'],
+                    'username': fake_id,
+                    'email': fake_id + '@gamil.com',
                 },
             )
             actual_user_count += 1
@@ -149,3 +159,31 @@ def dump_yelp_data(request):
             'fake_user_count': fake_user_count,
         }
     )
+
+
+def login_view(request):
+    if request.method=='POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('user_detail', user_id=username)
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = get_user_model()  # models.User
+        fields = ('email', 'username', 'password1', 'password2')
+
+
+class RegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('login')  # redirect to login if success
+
