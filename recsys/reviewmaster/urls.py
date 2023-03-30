@@ -5,6 +5,8 @@ from .import views
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(next_page='/reviewmaster/businesses',
                                                 template_name='registration/login.html'), name='login'),
+    path('logout', auth_views.LogoutView.as_view(next_page='/reviewmaster/login',
+                                                 template_name='registration/logout.html'), name='logout'),
     path('register/', views.RegisterView.as_view(template_name='registration/register.html'), name='register'),
     path('users/', views.user_index, name="user_detail"),
     path('users/<str:user_id>', views.user_detail, name="user_detail"),

@@ -126,6 +126,7 @@ def dump_yelp_data(request):
             # (Considering the sparsity of user data, retain only the first alphanumeric characters of
             # the user id. In total, a max of 26*2+10 users will be saved)
             fake_id = review_data['user']['id'][0]
+            fake_email = fake_id + '@gmail.com'
             user, created = User.objects.update_or_create(
                 id=fake_id,
                 defaults={
@@ -133,7 +134,8 @@ def dump_yelp_data(request):
                     'image_url': review_data['user']['image_url'],
                     'name': review_data['user']['name'],
                     'username': fake_id,
-                    'email': fake_id + '@gamil.com',
+                    # 'email': fake_id + '@gamil.com',
+                    'email': fake_email,
                 },
             )
             actual_user_count += 1
@@ -161,19 +163,19 @@ def dump_yelp_data(request):
     )
 
 
-def login_view(request):
-    if request.method=='POST':
-        form = AuthenticationForm(request, request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('user_detail', user_id=username)
-    else:
-        form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('user_detail', user_id=username)
+#     else:
+#         form = AuthenticationForm()
+#     return render(request, 'registration/login.html', {'form': form})
 
 
 class RegisterForm(UserCreationForm):
