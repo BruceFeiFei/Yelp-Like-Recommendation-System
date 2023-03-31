@@ -1,9 +1,15 @@
-{% if businesses %}
-<ul>
-    {% for business in businesses %}
-    <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
-    {% endfor %}
-</ul>
+{% block content %}
+    <h2>Businesses</h2>
+{% if business_list %}
+    <ul>
+        {% for business in business_list %}
+            <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
+        {% endfor %}
+    </ul>
 {% else %}
 <p>No businesses are available.</p>
 {% endif %}
+{% endblock %}
+
+
+

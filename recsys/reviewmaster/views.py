@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import CreateView
+from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
@@ -20,7 +21,7 @@ def user_index(request):
     return render(request, 'reviewmaster/user_index.html', {'users': users})
 
 
-@login_required
+# @login_required
 def user_detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     rated_businesses = user.rated_businesses()
@@ -188,4 +189,22 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')  # redirect to login if success
+
+
+class UsersView(ListView):
+    model = User
+    template_name = 'reviewmaster/user_index.html'
+
+
+class UserDetailView(DetailView):
+    model = User
+
+
+class BusinessDetailView(DetailView):
+    model = Business
+
+
+class BusinessesView(ListView):
+    model = Business
+    template_name = 'reviewmaster/business_index.html'
 
