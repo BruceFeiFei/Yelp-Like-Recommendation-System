@@ -7,8 +7,7 @@
    Django
    
 ## Fronted
-    HTML
-    CSS
+    HTML + CSS
  
 ## Backend
   Python3
