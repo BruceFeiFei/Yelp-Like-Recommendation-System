@@ -21,7 +21,7 @@ def user_index(request):
     return render(request, 'reviewmaster/user_index.html', {'users': users})
 
 
-# @login_required
+@login_required
 def user_detail(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     rated_businesses = user.rated_businesses()
@@ -198,13 +198,23 @@ class UsersView(ListView):
 
 class UserDetailView(DetailView):
     model = User
+    template_name = 'reviewmaster/user_detail.html'
 
-
-class BusinessDetailView(DetailView):
-    model = Business
+    # override context data
+    def get_context_data(self, **kwargs):
+        user = self.get_object()
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context["rated_businesses"] = user.rated_businesses()
+        context["content_based_recommended_businesses"] = user.content_based_recommended_businesses()
+        context["collaborative_based_recommended_businesses"] = user.collaborative_based_recommended_businesses()
+        return context
 
 
 class BusinessesView(ListView):
     model = Business
     template_name = 'reviewmaster/business_index.html'
+
+
+class BusinessDetailView(DetailView):
+    model = Business
 
