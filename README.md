@@ -3,12 +3,9 @@
 # A recommendation system based on Yelp ApI
 
 # Technical Stack
-## Full stack
-   Django
+
+## Full stack: Django
    
-## Fronted
-    HTML + CSS
+## Fronted: HTML + CSS
  
-## Backend
-  Python3
-  MySQL
+## Backend : Python3 + MySQL
