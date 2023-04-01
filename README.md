@@ -6,6 +6,6 @@
 
 ## Full stack: Django
    
-## Fronted: HTML + CSS
+## Fronted: HTML + CSS + Bootstrap5
  
 ## Backend : Python3 + MySQL
