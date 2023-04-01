@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Users</h2>
+    <h2 class="display-2">Users</h2>
 {% if user_list %}
     <ul class="list-group">
         {% for user in user_list %}
-<!--            <li>{{ user.name }}</li>-->
             <li class="list-group-item">
                 <a class="list-group-item-action" href="{% url 'user_detail' user.username %}">{{user.name}}</a>
             </li>

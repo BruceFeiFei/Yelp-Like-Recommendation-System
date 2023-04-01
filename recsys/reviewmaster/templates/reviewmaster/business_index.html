@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Businesses</h2>
+    <h3 class="display-3">Businesses</h3>
 {% if business_list %}
     <ul class="list-group">
         {% for business in business_list %}
             <li class="list-group-item">
-                <a href="{% url 'business_detail' business.id %}">{{business.name}}</a>
+                <a class="list-group-item-action" href="{% url 'business_detail' business.id %}">{{business.name}}</a>
             </li>
         {% endfor %}
     </ul>

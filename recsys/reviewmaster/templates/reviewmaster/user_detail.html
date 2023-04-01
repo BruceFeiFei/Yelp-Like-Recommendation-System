@@ -3,27 +3,27 @@
 {% block content %}
 
 {% if user %}
-<p>User Id is {{user.id}}.</p>
+<!--<p>User Id is {{user.id}}.</p>-->
 <p>User name is <a href=" {{user.profile_url}} " >{{user.name}}</a>.</p>
 <p><a href=" {{user.profile_url}} " >User profile</a></p>
-<p><img src="{{user.image_url}}" alt="image_url" width="200"></p>
-<div>
+<p><img src="{{user.image_url}}" class="rounded float-end" alt="image_url" width="200"></p>
+<div class="container-fluid">
     User has rated following businesses:
-    <ul>
+    <ul class="list-group">
         {% for business in rated_businesses %}
-        <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
+        <li class="list-group-item"><a class="list-group-item-action" href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
         {% endfor %}
     </ul>
     Businesses recommended by content based:
-    <ul>
+    <ul class="list-group">
         {% for business in content_based_recommended_businesses %}
-        <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
+        <li class="list-group-item"><a class="list-group-item-action" href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
         {% endfor %}
     </ul>
     Businesses recommended by collaborative filtering:
-    <ul>
+    <ul class="list-group">
         {% for business in collaborative_based_recommended_businesses %}
-        <li><a href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
+        <li class="list-group-item"><a class="list-group-item-action" href="{% url 'business_detail' business.id %}">{{business.name}}</a></li>
         {% endfor %}
     </ul>
 </div>
