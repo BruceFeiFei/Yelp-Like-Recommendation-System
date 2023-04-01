@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 {% if user %}
 <p>User Id is {{user.id}}.</p>
 <p>User name is <a href=" {{user.profile_url}} " >{{user.name}}</a>.</p>
@@ -26,3 +30,5 @@
 {% else %}
 <p>User doesn't exist.</p>
 {% endif %}
+
+{% endblock %}

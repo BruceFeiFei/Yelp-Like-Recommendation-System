@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 {% if business %}
 <p>Business name is <a href="{{business.url}}">{{business.name}}</a>.</p>
 <p>Business Id is {{business.id}}</p>
@@ -22,3 +26,5 @@
 {% else %}
 <p>Business doesn't exist.</p>
 {% endif %}
+
+{% endblock %}

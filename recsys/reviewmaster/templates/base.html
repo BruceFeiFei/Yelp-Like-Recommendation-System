@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% bootstrap_messages %}
+    <meta charset="UTF-8">
+    <title>Review Master</title>
+</head>
+<body>
+  <ul class="nav flex-row">
+    <li class="nav-item"><a class="nav-link" href="{% url 'business_index' %}">Home</a></li>
+    {% if not user.is_authenticated %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log in</a></li>
+    {% else %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log out</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'user_detail' user.username %}">My Account</a></li>
+    {% endif %}
+  </ul>
+{% block content %}
+{% endblock %}
+</body>
+</html>
