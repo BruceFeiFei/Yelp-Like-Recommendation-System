@@ -9,7 +9,7 @@ class User(AbstractUser):
     image_url = models.URLField(max_length=2000, null=True)
     name = models.CharField(max_length=200)
 
-    def __str__(self):
+    def __str__(self):   # str(user) call __str__
         return self.name
 
     def rated_businesses(self):
@@ -24,8 +24,10 @@ class User(AbstractUser):
         rated_business_cities = Business.objects.filter(pk__in=rated_businesses).values_list('city', flat=True)
 
         # Get all businesses in the same cities as the rated businesses
-        recommended_businesses = Business.objects.filter(city__in=rated_business_cities).exclude(pk__in=rated_businesses)
-
+        recommended_businesses = Business.objects.filter(city__in=rated_business_cities).exclude(
+            pk__in=rated_businesses)
+        # for testing
+        # recommended_businesses = Business.objects.filter(city__in=rated_business_cities)
         return recommended_businesses
 
     def collaborative_based_recommended_businesses(self):
