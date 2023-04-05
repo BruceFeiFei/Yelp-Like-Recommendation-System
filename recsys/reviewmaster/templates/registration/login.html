@@ -2,11 +2,16 @@
 {% load django_bootstrap5 %}
 {% block content %}
 
-<h2>Login</h2>
-<form method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<h2 class="text-sm-center">Login</h2>
+<div class="form-group" align="center">
+    <form method="post"  class="form-outline w-25" >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+
+
 
 {% endblock %}
