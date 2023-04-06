@@ -119,13 +119,13 @@ class BusinessModelTests(TestCase):
 
 class ReviewModelTests(TestCase):
     def test_str(self):
-
         user = create_test_user('test_user', 'Test Name')
         business = create_test_business('test_business', 'Test Business', 'Test City')
         user_business_review = create_test_review('u1b1_review', user, business, 5)
 
         # no save into database
-        self.assertEqual(str(user_business_review), str(user) + ' rates ' + str(business) + ' at ' + str(user_business_review.rating) + ' Star.')
+        self.assertEqual(str(user_business_review), str(user) + ' rates ' + str(business) + ' at ' + \
+                         str(user_business_review.rating) + ' Star.')
 
 
 class BusinessIndexViewTests(TestCase):
