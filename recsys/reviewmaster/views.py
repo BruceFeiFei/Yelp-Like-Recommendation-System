@@ -182,13 +182,13 @@ def dump_yelp_data(request):
 class RegisterForm(UserCreationForm):
     class Meta:
         model = get_user_model()  # models.User
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ('email', 'username', 'id', 'name', 'password1', 'password2')
 
 
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('login')  # redirect to login if success
+    success_url = reverse_lazy('login')  # redirect to log_in if success
 
 
 class UsersView(ListView):
