@@ -4,14 +4,17 @@ from .models import Business, Review
 from django.utils import timezone
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth import get_user
 # Create your tests here.
 
 
-def create_test_user(id_, name):
+def create_test_user(id_, name, password='102030aa', email='test@gmail.com'):
     return User(
         id=id_,
         username=id_,
-        name=name
+        name=name,
+        password=password,
+        email=email,
     )
 
 
@@ -151,6 +154,29 @@ class BusinessIndexViewTests(TestCase):
         response = self.client.get(reverse('business_detail', args=('test_business',)))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['business'], business)
+
+
+class LoginViewTests(TestCase):
+    def test_login(self):
+        user = create_test_user('test_user', 'test_user')
+        user.save()
+        data = {
+            'username': 'test_user',
+            'password': '102030aa',
+        }
+        response = self.client.post('/login/', data, follow=True)
+        self.assertEqual(response.context['user'].is_active)
+
+
+# class RegisterViewTests(TestCase):
+#     """
+#      Base class for the test cases; this sets up two active users
+#     """
+#     def setUp(self):
+#         self.sample_user1 = create_test_user('test_user1', 'Test Name1')
+#         self.sample_user2 = create_test_user('test_user2', 'Test Name2')
+#         self.sample_user1.save()
+#         self.sample_user2.save()
 
 
 
