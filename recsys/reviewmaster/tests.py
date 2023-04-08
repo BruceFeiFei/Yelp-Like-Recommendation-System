@@ -4,16 +4,15 @@ from .models import Business, Review
 from django.utils import timezone
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user
+from django.test import Client
 # Create your tests here.
 
 
-def create_test_user(id_, name, password='102030aa', email='test@gmail.com'):
+def create_test_user(id_, name, email='test@gmail.com'):
     return User(
         id=id_,
         username=id_,
         name=name,
-        password=password,
         email=email,
     )
 
@@ -157,18 +156,36 @@ class BusinessIndexViewTests(TestCase):
 
 
 class LoginViewTests(TestCase):
-    def test_login(self):
+
+    def setUp(self):
+        # create one test user
         user = create_test_user('test_user', 'test_user')
+        # must use user.set_password, requires using hashing!
+        user.set_password('102030aa')
         user.save()
-        data = {
-            'username': 'test_user',
-            'password': '102030aa',
-        }
-        response = self.client.post('/login/', data, follow=True)
-        self.assertEqual(response.context['user'].is_active)
+
+    def test_login_success(self):
+        login = self.client.login(username='test_user', password='102030aa')
+        self.assertTrue(login)
+
+    def test_login_fail_with_wrong_password(self):
+        login = self.client.login(username='test_user', password='102030')
+        self.assertFalse(login)
+
+    def test_login_redirect_page(self):
+        response = self.client.post(reverse('login'), {'username': 'test_user', 'password': '102030aa'},
+                                    follow=True)
+        print(response.redirect_chain)
+        self.assertEqual(response.status_code, 200)
+        # redirect to 'business_index
+        self.assertRedirects(response, expected_url=reverse('business_index'))
 
 
-# class RegisterViewTests(TestCase):
+
+
+
+
+    # class RegisterViewTests(TestCase):
 #     """
 #      Base class for the test cases; this sets up two active users
 #     """
