@@ -177,23 +177,14 @@ class LoginViewTests(TestCase):
                                     follow=True)
         print(response.redirect_chain)
         self.assertEqual(response.status_code, 200)
-        # redirect to 'business_index
+        # redirect to 'business_index'
         self.assertRedirects(response, expected_url=reverse('business_index'))
 
 
+class RegisterViewTest:
+    pass
 
 
-
-
-    # class RegisterViewTests(TestCase):
-#     """
-#      Base class for the test cases; this sets up two active users
-#     """
-#     def setUp(self):
-#         self.sample_user1 = create_test_user('test_user1', 'Test Name1')
-#         self.sample_user2 = create_test_user('test_user2', 'Test Name2')
-#         self.sample_user1.save()
-#         self.sample_user2.save()
 
 
 
