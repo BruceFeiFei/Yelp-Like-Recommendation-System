@@ -1,0 +1,5 @@
+# ignore ALL .gitattributes files
+*.gitattributes
+
+# ignore settings.py files
+recsys/recsys/settings.py
