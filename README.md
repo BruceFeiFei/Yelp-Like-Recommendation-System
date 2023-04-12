@@ -30,3 +30,4 @@ improving the user experience and increasing engagement with the Yelp platform.
     This page serves as the home page of the recsys.
 ![Business_index_Page](/Display/Business_index.png)
 
+

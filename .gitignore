@@ -1,3 +1,4 @@
+# ignore ./gitattributes
 *.gitattributes
 
 # ignore settings.py files
