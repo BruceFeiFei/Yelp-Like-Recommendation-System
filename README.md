@@ -1,9 +1,14 @@
 # Project Title: Django Yelp Recommendation System(recsys)
 
 ## Project Description
-    Developed a recommendation system using Yelp API data that utilizes two basic algorithms, Collaborative Filtering and Content-Based Filtering.
-    The application is built as a full-stack web application using Python3 and Django as the backend, and HTML5, CSS, and Bootstrap as the frontend. 
-    The project provides personalized recommendations to users based on their cities, improving the user experience and increasing engagement with the Yelp platform.
+Developed a recommendation system using Yelp API data that utilizes two basic algorithms, 
+Collaborative Filtering and Content-Based Filtering.
+
+The application is built as a full-stack web application using Python3 and Django as the backend, 
+and HTML5, CSS, and Bootstrap as the frontend. 
+
+The project provides personalized recommendations to users based on their cities, 
+improving the user experience and increasing engagement with the Yelp platform.
 
 ## Responsibilities:
 * Utilized Yelp API to fetch user data, restaurant data, and reviews
