@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,12 +83,12 @@ WSGI_APPLICATION = 'recsys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': '0514fdaa',
-        'HOST': 'localhost',
-        'PORT': 3306,
+        'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
+        'NAME': os.environ.get('DATABASE_NAME','mydb'),
+        'USER': os.environ.get('DATABASE_USER', 'root'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', '0514fdaa'),
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
+        'PORT': os.environ.get('DATABASE_PORT', 3306),
     }
 }
 
