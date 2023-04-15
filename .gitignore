@@ -1,8 +1,8 @@
 # ignore ./gitattributes
 *.gitattributes
 
-# ignore settings.py files
-recsys/recsys/settings.py
+
+
 
 # ignore /.idea
 /.idea
