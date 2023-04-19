@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-at2v%6ht^ltw^(t9_xb1h0i*%p_uao^2sanuft^4md*a4@r=!x
 DEBUG = True
 
 ALLOWED_HOSTS = ['3.14.70.194']
+# ALLOWED_HOSTS = []
 
 YELP_API_KEY = 'FJ8yfe18pKLjAXl3xwU7jtxx9w6kYkOtAhojNinpFVPpIn4Upx99hOhgclEPjn05lXg' \
                '3Y6SzJM-5aBxFL4EGcFBMAXL0D68r3O2Zs9hduRmlUg6iSFbV_XpysSwVZHYx'
