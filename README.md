@@ -1,7 +1,7 @@
 # Project Title: Yelp-Like Recommendation System(recsys)
 
 ## Project Description
-Developed a recommendation system using Yelp API data that utilizes two basic algorithms, 
+Developed a Yelp-Like recommendation system using Yelp API data that utilizes two basic algorithms, 
 Collaborative Filtering and Content-Based Filtering.
 
 The application is built as a full-stack web application using Python3 and Django as the backend, 
@@ -12,6 +12,9 @@ improving the user experience and increasing engagement with the Yelp platform.
 
 The application is deployed on AWS using ngnix, 
 and the project includes unit tests for the full application.
+
+To view the project online, [click here](http://3.14.70.194:8000/reviewmaster/businesses/), 
+you will redirect to the home page of this project.
 
 ## Responsibilities:
 * Utilized Yelp API to fetch user data, restaurant data, and reviews
