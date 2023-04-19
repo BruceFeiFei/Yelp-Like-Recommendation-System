@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'recsys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.environ.get('DATABASE_NAME','mydb'),
+        'NAME': os.environ.get('DATABASE_NAME', 'mydb'),
         'USER': os.environ.get('DATABASE_USER', 'root'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', '0514fdaa'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),

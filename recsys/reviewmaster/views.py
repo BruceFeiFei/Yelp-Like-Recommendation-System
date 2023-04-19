@@ -83,7 +83,7 @@ def dump_yelp_data(request):
         'Authorization': 'Bearer ' + settings.YELP_API_KEY
     }
     params = {
-        'location': 'California Area',
+        'location': 'Bay Area',
         'limit': 50
     }
     business_count = 0
